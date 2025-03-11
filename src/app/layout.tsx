@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 import { dbConnect } from "@/service/db";
 
@@ -28,9 +29,7 @@ export default async function RootLayout({
   await dbConnect();
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${poppins.variable} antialiased`}>
-        {children}
-      </body>
+      <body className={cn(inter.className, poppins.className)}>{children}</body>
     </html>
   );
 }
