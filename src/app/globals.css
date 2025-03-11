@@ -116,6 +116,10 @@
   --sidebar-ring: oklch(0.446 0.03 256.802);
 }
 
+@theme {
+  --container-2xl: 1400px;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -124,3 +128,4 @@
     @apply bg-background text-foreground;
   }
 }
+
