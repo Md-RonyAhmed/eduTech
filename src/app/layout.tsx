@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins} from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { dbConnect } from "@/service/db";
 
@@ -22,15 +22,13 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   await dbConnect();
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${poppins.variable} antialiased`}
-      >
+      <body className={`${inter.variable} ${poppins.variable} antialiased`}>
         {children}
       </body>
     </html>

@@ -3,17 +3,14 @@ import { buttonVariants } from "@/components/ui/button";
 import { getCourses } from "@/controller/course-controller";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";
-// import Image from "next/image";
 import Link from "next/link";
 import CourseCard from "./courses/_components/CourseCard";
-
-
-// import CourseCard from "./courses/_components/CourseCard";
+import { getCategories } from "@/controller/category-controller";
+import Image from "next/image";
 
 const HomePage = async () => {
   const courses = await getCourses();
-  console.log(courses)
-//   const categories = await getCategories();
+  const categories = await getCategories();
 
   return (
     <div className="container mx-auto">
@@ -32,7 +29,7 @@ const HomePage = async () => {
             />
           </div>
           <span className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium border shadow-lg">
-            Hey, Welcome
+            Hey, Welcome to EduTech!
           </span>
           <h1 className="font-heading text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
             Learn Today, Lead Tomorrow.
@@ -78,25 +75,25 @@ const HomePage = async () => {
           </Link>
         </div>
         <div className="mx-auto grid justify-center gap-4 grid-cols-2  md:grid-cols-3 2xl:grid-cols-4">
-          {/* {categories.map((category) => {
+          {categories.map((category) => {
             return (
               <Link
-                href={`/categories/${category.id}`}
-                key={category.id}
+                href={`/categories/${category._id}`}
+                key={category._id}
                 className="relative overflow-hidden rounded-lg border bg-background p-2 hover:scale-105 transition-all duration-500 ease-in-out"
               >
                 <div className="flex  flex-col gap-4 items-center justify-between rounded-md p-6">
                   <Image
-                    src={`/assets/images/categories/${category.thumbnail}`}
-                    alt={category.title}
-                    width={100}
-                    height={100}
+                    src={`/assets/images/categories/${category?.thumbnail}`}
+                    alt={category?.title}
+                    width={150}
+                    height={150}
                   />
                   <h3 className="font-bold">{category.title}</h3>
                 </div>
               </Link>
             );
-          })} */}
+          })}
         </div>
       </section>
 
@@ -116,8 +113,6 @@ const HomePage = async () => {
             return <CourseCard key={course._id.toString()} course={course} />;
           })}
         </div>
-
-
       </section>
     </div>
   );

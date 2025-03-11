@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BookOpen } from "lucide-react";
 import { ArrowRight } from "lucide-react";
-// import { formatPrice } from "@/lib/formatPrice";
+import { formatPrice } from "@/lib/formatPrice";
 import { Button } from "@/components/ui/button";
 import { ICourse } from "@/interface/course-interface";
 
@@ -38,7 +38,7 @@ const CourseCard: React.FC<{
 
           <div className="flex items-center justify-between mt-4">
             <p className="text-md md:text-sm font-medium text-slate-700">
-              {course?.price}
+              {formatPrice(course?.price)}
             </p>
 
             <Button variant="ghost" className="text-xs text-sky-700 h-7 gap-1">
