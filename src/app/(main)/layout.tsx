@@ -5,7 +5,7 @@ import { INavItem } from "@/types/nav";
 const navLinks: INavItem[] = [
   {
     title: "Features",
-    href: "/#features",
+    href: "#features",
   },
   {
     title: "Pricing",

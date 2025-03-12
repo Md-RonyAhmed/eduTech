@@ -11,7 +11,7 @@ const CourseCard: React.FC<{
 }> = ({ course }) => {
   return (
     <Link key={course._id.toString()} href={`/courses/${course._id}`}>
-      <div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full">
+      <div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-fit">
         <div className="relative w-full aspect-video rounded-md overflow-hidden">
           <Image
             src={`/assets/images/courses/${course?.thumbnail}`}
