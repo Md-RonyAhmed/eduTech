@@ -5,7 +5,7 @@ import { INavItem } from "@/types/nav";
 const navLinks: INavItem[] = [
   {
     title: "Features",
-    href: "#features",
+    href: "/#features",
   },
   {
     title: "Pricing",
@@ -14,6 +14,10 @@ const navLinks: INavItem[] = [
   {
     title: "Blog",
     href: "/blog",
+  },
+  {
+    title: "Courses",
+    href: "/courses",
   },
   {
     title: "Documentation",
