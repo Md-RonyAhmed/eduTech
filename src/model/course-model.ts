@@ -6,6 +6,10 @@ const courseSchema = new Schema<ICourse>({
     required: true,
     type: String,
   },
+  subtitle: {
+    required: true,
+    type: String
+  },
   description: {
     required: true,
     type: String,
@@ -13,6 +17,10 @@ const courseSchema = new Schema<ICourse>({
   thumbnail: {
     required: true,
     type: String,
+  },
+  learning: {
+    required: true,
+    type: [String]
   },
   modules: [{ required: true, type: Schema.ObjectId, ref: "Module" }],
   price: {

@@ -26,3 +26,21 @@ export async function getCourses(): Promise<ICourse[]> {
     });
   return courses;
 }
+
+// get course details from db
+export async function getCourseDetails(id: string) {
+  const course = await Course.findById(id)
+    .populate({
+      path: "testimonials",
+      model: Testimonial,
+      populate: {
+        path: "user",
+        model: User,
+      },
+    })
+    .populate({
+      path: "instructor",
+      model: User,
+    });
+  return course;
+}

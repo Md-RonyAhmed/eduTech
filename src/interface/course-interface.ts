@@ -8,6 +8,8 @@ import { IModule } from "./module-interface";
 export interface ICourse {
   _id: Types.ObjectId; // Unique identifier for the course
   title: string;
+  subtitle: string;
+  learning: string[];
   description: string;
   thumbnail: string;
   modules: IModule[]; // Reference to Module model

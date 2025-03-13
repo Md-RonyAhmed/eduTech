@@ -9,9 +9,10 @@ const testimonialSchema = new Schema<ITestimonial>({
     required: true,
     type: String,
   },
-  user: {
+  user:  {
     required: true,
     type: Schema.ObjectId,
+    ref: "User",
   },
   courseId: {
     required: true,

@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import { dbConnect } from "@/service/db";
+import '@smastrom/react-rating/style.css'
 
 const inter = Inter({
   variable: "--font-inter",
