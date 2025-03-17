@@ -10,6 +10,10 @@ const moduleSchema = new Schema<IModule>({
     required: true,
     type: String,
   },
+  duration: {
+    required: true,
+    type: Number,
+  },
   status: {
     required: true,
     type: String,

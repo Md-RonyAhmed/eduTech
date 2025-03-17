@@ -5,6 +5,7 @@ export interface IModule {
   title: string;
   description: string;
   status: string;
+  duration: number;
   slug: string;
   course: Types.ObjectId; // Reference to the Course model
   lessonIds: Types.ObjectId[]; // Array of references to Lesson models

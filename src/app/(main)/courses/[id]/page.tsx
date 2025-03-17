@@ -4,7 +4,12 @@ import Testimonials from "./_components/Testimonials";
 import RelatedCourses from "./_components/RelatedCourses";
 import CourseDetails from "./_components/CourseDetails";
 
-const SingleCoursePage = async ({ params: { id } }) => {
+const SingleCoursePage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
+  const { id } = await params;
   const course = await getCourseDetails(id);
   return (
     <div className="container mx-auto">
