@@ -1,7 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+
 import { X } from "lucide-react";
 import { Button, buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
@@ -12,20 +14,29 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+
+import { useEffect } from "react";
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
-import { INavItem } from "@/types/nav";
+import { signOut, useSession } from "next-auth/react";
 
-interface MainNavProps {
-  items: INavItem[];
-  children?: React.ReactNode;
-}
-export function MainNav({ items, children }: MainNavProps) {
+export function MainNav({ items, children }) {
+  const { data: session } = useSession();
+  console.log(session);
+
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [loginSession, setLoginSession] = useState(null);
+
+  console.log(loginSession);
+
+  useEffect(() => {
+    console.log("test");
+    setLoginSession(session);
+  }, [session]);
 
   return (
     <>
-      <div className="flex justify-between gap-6 lg:gap-10">
+      <div className="flex gap-6 lg:gap-10">
         <Link href="/">
           <Logo />
         </Link>
@@ -34,7 +45,7 @@ export function MainNav({ items, children }: MainNavProps) {
             {items?.map((item, index) => (
               <Link
                 key={index}
-                href={item.disabled ? "/" : item.href}
+                href={item.disabled ? "#" : item.href}
                 className={cn(
                   "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm"
                 )}
@@ -50,29 +61,31 @@ export function MainNav({ items, children }: MainNavProps) {
         )}
       </div>
       <nav className="flex items-center gap-3">
-        <div className="items-center gap-3 hidden lg:flex">
-          <Link
-            href="/login"
-            className={cn(buttonVariants({ size: "sm" }), "px-4")}
-          >
-            Login
-          </Link>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
-                Register
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 mt-4">
-              <DropdownMenuItem className="cursor-pointer">
-                <Link href="">Student</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="cursor-pointer">
-                <Link href="">Instructor</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+        {!loginSession && (
+          <div className="items-center gap-3 hidden lg:flex">
+            <Link
+              href="/login"
+              className={cn(buttonVariants({ size: "sm" }), "px-4")}
+            >
+              Login
+            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm">
+                  Register
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 mt-4">
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href="/register/student">Student</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href="/register/instructor">Instructor</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        )}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <div className="cursor-pointer">
@@ -87,17 +100,21 @@ export function MainNav({ items, children }: MainNavProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56 mt-4">
             <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="account">Profile</Link>
+              <Link href="/account">Profile</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="account/enrolled-courses">My Courses</Link>
+              <Link href="/account/enrolled-courses">My Courses</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer" asChild>
               <Link href="">Testimonials & Certificates</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="">Logout</Link>
-            </DropdownMenuItem>
+            {loginSession && (
+              <DropdownMenuItem className="cursor-pointer" asChild>
+                <Link href="#" onClick={() => signOut()}>
+                  Logout
+                </Link>
+              </DropdownMenuItem>
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
         <button
