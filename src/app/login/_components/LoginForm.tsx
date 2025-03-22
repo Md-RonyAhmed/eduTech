@@ -30,7 +30,6 @@ export function LoginForm() {
       const response = await credentialLogin(formData);
 
       if (response.error) {
-        console.error(response.error)
         setError(response.error);
       } else {
         router.push("/courses");

@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
-import { authConfig } from "./auth.config";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { User } from "@/model/user-model";
 import bcrypt from "bcryptjs";
+import { authConfig } from "./auth.config";
 export const {
   auth,
   signIn,
@@ -17,7 +17,7 @@ export const {
 
         try {
             const user = await User.findOne({email: credentials?.email});
-            console.log(user);
+            
             if (user) {
               const isMatch = await bcrypt.compare(
                 credentials?.password,
@@ -27,15 +27,12 @@ export const {
               if (isMatch) {
                 return user;
               } else {
-                console.error("password mismatch");
                 throw new Error("Try your password again");
               }
             } else {
-              console.error("User not found");
               throw new Error("User not found");
             }
         } catch (err) {
-          console.error(err);
           throw new Error(err);
         }
       },

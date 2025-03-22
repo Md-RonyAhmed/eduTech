@@ -11,7 +11,7 @@ const CourseDetails = ({ course }) => {
   return (
     <section className="py-8 md:py-12 lg:py-24">
       <div className="container">
-        <span className="bg-success py-0.5 px-0.5 rounded-full text-xs font-medium inline-block text-white">
+        <span className="bg-green-500 py-1 px-1 rounded-full text-xs font-medium inline-block text-white">
           {course?.category?.title}
         </span>
         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold 2xl:text-5xl mt-3">
@@ -33,7 +33,7 @@ const CourseDetails = ({ course }) => {
             </p>
           </div>
           <div className="flex items-center gap-2 text-sm">
-            <span className="text-success font-semibold">Last Updated: </span>
+            <span className="text-green-500 font-semibold">Last Updated: </span>
             <span>{lastModifiedDate}</span>
           </div>
         </div>
