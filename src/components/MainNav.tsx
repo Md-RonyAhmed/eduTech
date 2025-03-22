@@ -19,12 +19,19 @@ import { useEffect } from "react";
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
 import { signOut, useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export function MainNav({ items, children }) {
   const { data: session } = useSession();
 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [loginSession, setLoginSession] = useState(null);
+
+  console.log(session);
+
+  if (session?.error === "RefreshAccessTokenError") {
+    redirect("/login");
+  }
 
   useEffect(() => {
     setLoginSession(session);
