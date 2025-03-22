@@ -8,5 +8,6 @@ export const PUBLIC_ROUTES = [
     '/courses',
     '/pricing',
     '/blog',
-    '/docs'
+    '/docs',
+    '/api/auth/callback/google'
 ]
