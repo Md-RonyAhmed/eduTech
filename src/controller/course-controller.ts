@@ -25,9 +25,10 @@ export async function getCourses(): Promise<ICourse[]> {
     .populate({
       path: "modules",
       model: Module,
-    });
+    }).lean();
   return courses;
 }
+
 
 // get course details from db
 export async function getCourseDetails(id: string) {
@@ -51,7 +52,7 @@ export async function getCourseDetails(id: string) {
     .populate({
       path: "modules",
       model: Module,
-    });
+    }).lean();
   return course;
 }
 

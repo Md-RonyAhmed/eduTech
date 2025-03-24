@@ -36,5 +36,5 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ]
+, "src/app/(main)/courses/_components/CourseCard.jsx", "src/app/(main)/courses/[id]/_components/CourseDetailsIntro.jsx", "src/components/EnrollCourse.jsx", "src/app/(main)/courses/[id]/page.jsx", "src/controller/course-controller.ts", "src/app/(main)/courses/page.jsx", "src/app/actions/stripe.js"  ]
 }
