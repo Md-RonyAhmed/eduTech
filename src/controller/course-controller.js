@@ -1,4 +1,4 @@
-import { ICourse } from "@/interface/course-interface";
+
 import { Category } from "@/model/category-model";
 import { Course } from "@/model/course-model";
 import { Module } from "@/model/module-model";
@@ -8,7 +8,7 @@ import { getEnrollmentsForCourse } from "./enrollment-controller";
 import { getTestimonialsForCourse } from "./testimonials-controller";
 
 //get all courses from db
-export async function getCourses(): Promise<ICourse[]> {
+export async function getCourses() {
   const courses = await Course.find({})
     .populate({
       path: "category",
@@ -31,7 +31,7 @@ export async function getCourses(): Promise<ICourse[]> {
 
 
 // get course details from db
-export async function getCourseDetails(id: string) {
+export async function getCourseDetails(id) {
   const course = await Course.findById(id)
     .populate({
       path: "category",
@@ -56,7 +56,7 @@ export async function getCourseDetails(id: string) {
   return course;
 }
 
-export async function getCourseDetailsByInstructor(instructorId: string) {
+export async function getCourseDetailsByInstructor(instructorId) {
   const courses = await Course.find({ instructor: instructorId });
 
   const enrollments = await Promise.all(
