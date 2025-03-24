@@ -7,6 +7,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
 
 const Testimonials = ({testimonials}) => {
@@ -31,7 +32,7 @@ const Testimonials = ({testimonials}) => {
                                 <div className="sm:break-inside-avoid">
                                     <blockquote className="rounded-lg bg-gray-50 p-6  sm:p-8 shadow-sm">
                                         <div className="flex items-center gap-4">
-                                            <img
+                                            <Image
                                                 alt=""
                                                 src={testimonial?.user?.profilePicture}
                                                 width="56"

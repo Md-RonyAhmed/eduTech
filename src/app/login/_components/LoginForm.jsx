@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 
@@ -13,13 +13,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { credentialLogin } from "@/app/actions";
-
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export function LoginForm() {
-
-  const [error, setError] = useState('');
   const router = useRouter();
 
   async function onSubmit(event) {
@@ -34,8 +30,8 @@ export function LoginForm() {
       } else {
         router.push("/courses");
       }
-    } catch (e) {
-      setError(e.message);
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -74,11 +70,11 @@ export function LoginForm() {
         <div className="mt-4 text-center text-sm">
           Don&apos;t have an account?{" "}
           <p>
-            Register as {" "}
+            Register as{" "}
             <Link href="/register/instructor" className="underline">
               Instructor
-            </Link>
-            {" "} or {" "}
+            </Link>{" "}
+            or{" "}
             <Link href="/register/student" className="underline">
               Student
             </Link>

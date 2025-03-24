@@ -3,7 +3,7 @@ import { MainNav } from "@/components/MainNav";
 import { INavItem } from "@/types/nav";
 import { SessionProvider } from "next-auth/react";
 
-const navLinks: INavItem[] = [
+const navLinks = [
   {
     title: "Features",
     href: "/#features",
@@ -25,7 +25,7 @@ const navLinks: INavItem[] = [
     href: "/docs",
   },
 ];
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
+const MainLayout = ({ children }) => {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="z-40 bg-gray-200/80 backdrop-blur-md fixed top-0 left-0 right-0 border-b ">
